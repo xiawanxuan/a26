@@ -30,4 +30,17 @@ public class AlertRuleDTO implements Serializable {
     private String messageTemplate;
     private Boolean recoverable;
     private Integer suppressDuration;
+    private String baselinePeriod;
+    private Integer baselineWindowSize;
+    private BigDecimal stdDevMultiplier;
+    private BigDecimal percentileValue;
+    private String comparisonMode;
+    private Integer comparisonWindowSize;
+    private BigDecimal momThreshold;
+    private BigDecimal yoyThreshold;
+    private BigDecimal rateOfChangeThreshold;
+    private String rateOfChangeUnit;
+    private Integer trendWindowSize;
+    private String trendDirection;
+    private Boolean useAbsoluteValue;
 }

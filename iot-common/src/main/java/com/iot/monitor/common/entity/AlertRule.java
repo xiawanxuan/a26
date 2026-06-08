@@ -78,6 +78,45 @@ public class AlertRule {
     @Column
     private Integer suppressDuration;
 
+    @Column(length = 32)
+    private String baselinePeriod;
+
+    @Column
+    private Integer baselineWindowSize;
+
+    @Column(precision = 10, scale = 4)
+    private BigDecimal stdDevMultiplier;
+
+    @Column(precision = 10, scale = 4)
+    private BigDecimal percentileValue;
+
+    @Column(length = 32)
+    private String comparisonMode;
+
+    @Column
+    private Integer comparisonWindowSize;
+
+    @Column(precision = 10, scale = 4)
+    private BigDecimal momThreshold;
+
+    @Column(precision = 10, scale = 4)
+    private BigDecimal yoyThreshold;
+
+    @Column(precision = 10, scale = 4)
+    private BigDecimal rateOfChangeThreshold;
+
+    @Column(length = 16)
+    private String rateOfChangeUnit;
+
+    @Column
+    private Integer trendWindowSize;
+
+    @Column(length = 16)
+    private String trendDirection;
+
+    @Column
+    private Boolean useAbsoluteValue;
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime createTime;

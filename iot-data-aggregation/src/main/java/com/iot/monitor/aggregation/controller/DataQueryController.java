@@ -61,8 +61,34 @@ public class DataQueryController {
             @PathVariable String metric,
             @RequestParam(defaultValue = "60") int minutes) {
 
-        Map<String, Object> result = dataAggregationService.getRealtimeStatistics(
-                deviceCode, metric, minutes);
+        Map<String, Object> result = dataAggregationService.getRealtimeStatistics(deviceCode, metric);
+        return ApiResponse.success(result);
+    }
+
+    @GetMapping("/dynamic-threshold/{deviceCode}/{metric}")
+    public ApiResponse<Map<String, Object>> getDynamicThreshold(
+            @PathVariable String deviceCode,
+            @PathVariable String metric,
+            @RequestParam(defaultValue = "300") int windowSeconds,
+            @RequestParam(defaultValue = "3.0") double stdDevMultiplier) {
+
+        Map<String, Object> result = new java.util.HashMap<>();
+        result.put("deviceCode", deviceCode);
+        result.put("metric", metric);
+        result.put("windowSeconds", windowSeconds);
+        result.put("stdDevMultiplier", stdDevMultiplier);
+
+        var stats = dataAggregationService.getWindowStats(deviceCode, metric, windowSeconds);
+        if (stats != null && !stats.isEmpty()) {
+            result.put("avg", stats.getAvg());
+            result.put("stdDev", stats.getStdDev());
+            result.put("upperBound", stats.getAvg().add(
+                    stats.getStdDev().multiply(java.math.BigDecimal.valueOf(stdDevMultiplier))));
+            result.put("lowerBound", stats.getAvg().subtract(
+                    stats.getStdDev().multiply(java.math.BigDecimal.valueOf(stdDevMultiplier))));
+            result.put("dataCount", stats.getCount());
+        }
+
         return ApiResponse.success(result);
     }
 

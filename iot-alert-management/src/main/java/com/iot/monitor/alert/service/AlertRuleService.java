@@ -148,6 +148,19 @@ public class AlertRuleService {
         entity.setMessageTemplate(dto.getMessageTemplate());
         entity.setRecoverable(dto.getRecoverable() != null ? dto.getRecoverable() : true);
         entity.setSuppressDuration(dto.getSuppressDuration());
+        entity.setBaselinePeriod(dto.getBaselinePeriod());
+        entity.setBaselineWindowSize(dto.getBaselineWindowSize());
+        entity.setStdDevMultiplier(dto.getStdDevMultiplier());
+        entity.setPercentileValue(dto.getPercentileValue());
+        entity.setComparisonMode(dto.getComparisonMode());
+        entity.setComparisonWindowSize(dto.getComparisonWindowSize());
+        entity.setMomThreshold(dto.getMomThreshold());
+        entity.setYoyThreshold(dto.getYoyThreshold());
+        entity.setRateOfChangeThreshold(dto.getRateOfChangeThreshold());
+        entity.setRateOfChangeUnit(dto.getRateOfChangeUnit());
+        entity.setTrendWindowSize(dto.getTrendWindowSize());
+        entity.setTrendDirection(dto.getTrendDirection());
+        entity.setUseAbsoluteValue(dto.getUseAbsoluteValue());
     }
 
     private AlertRuleDTO convertToDTO(AlertRule entity) {
@@ -177,6 +190,19 @@ public class AlertRuleService {
         dto.setMessageTemplate(entity.getMessageTemplate());
         dto.setRecoverable(entity.getRecoverable());
         dto.setSuppressDuration(entity.getSuppressDuration());
+        dto.setBaselinePeriod(entity.getBaselinePeriod());
+        dto.setBaselineWindowSize(entity.getBaselineWindowSize());
+        dto.setStdDevMultiplier(entity.getStdDevMultiplier());
+        dto.setPercentileValue(entity.getPercentileValue());
+        dto.setComparisonMode(entity.getComparisonMode());
+        dto.setComparisonWindowSize(entity.getComparisonWindowSize());
+        dto.setMomThreshold(entity.getMomThreshold());
+        dto.setYoyThreshold(entity.getYoyThreshold());
+        dto.setRateOfChangeThreshold(entity.getRateOfChangeThreshold());
+        dto.setRateOfChangeUnit(entity.getRateOfChangeUnit());
+        dto.setTrendWindowSize(entity.getTrendWindowSize());
+        dto.setTrendDirection(entity.getTrendDirection());
+        dto.setUseAbsoluteValue(entity.getUseAbsoluteValue());
         return dto;
     }
 }
