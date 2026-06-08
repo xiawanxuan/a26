@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.iot.monitor</groupId>
+        <artifactId>iot-monitor</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>iot-api</artifactId>
+    <name>IoT API Gateway</name>
+    <description>API网关/启动模块：整合所有模块，提供REST API</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.iot.monitor</groupId>
+            <artifactId>iot-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iot.monitor</groupId>
+            <artifactId>iot-device-management</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iot.monitor</groupId>
+            <artifactId>iot-data-receiver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iot.monitor</groupId>
+            <artifactId>iot-data-aggregation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iot.monitor</groupId>
+            <artifactId>iot-alert-management</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.iot.monitor.IotMonitorApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

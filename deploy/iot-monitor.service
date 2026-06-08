@@ -1,0 +1,24 @@
+[Unit]
+Description=IoT Environment Monitor Service
+After=network.target
+After=mysql.service
+
+[Service]
+Type=forking
+User=root
+WorkingDirectory=/opt/iot-monitor
+ExecStart=/opt/iot-monitor/bin/iot-monitor.sh start
+ExecStop=/opt/iot-monitor/bin/iot-monitor.sh stop
+ExecReload=/opt/iot-monitor/bin/iot-monitor.sh restart
+PIDFile=/var/run/iot-monitor.pid
+Restart=on-failure
+RestartSec=30
+
+LimitNOFILE=65536
+LimitNPROC=4096
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
